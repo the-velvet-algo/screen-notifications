@@ -2,23 +2,30 @@ apply plugin: 'com.android.application'
 apply plugin: 'realm-android'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '25.0.3'
+    namespace 'com.lukekorth.screennotifications'
+    compileSdkVersion 34
 
     defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 25
+        applicationId 'com.lukekorth.screennotifications'
+        minSdkVersion 21
+        targetSdkVersion 34
         versionCode 22
         versionName "0.14.2"
     }
 
-    lintOptions {
-        warning 'MissingTranslation'
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
     }
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.lukekorth:mailable_log:0.1.6'
-    compile 'fr.nicolaspomepuy:discreetapprate:2.0.4@aar'
+    implementation 'com.android.support:appcompat-v7:25.3.1'
+    implementation 'com.github.lkorth:MailableLog:0.1.6'
+    implementation 'com.github.PomepuyN:DiscreetAppRate:d9e007907d'
 }
