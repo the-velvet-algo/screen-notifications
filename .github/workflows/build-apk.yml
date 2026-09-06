@@ -5,6 +5,9 @@ on:
   push:
     branches: [ master ]
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,9 +24,24 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build debug APK
-        run: ./gradlew assembleDebug --stacktrace
+        shell: bash
+        run: |
+          ./gradlew assembleDebug --stacktrace 2>&1 | tee build.log
+          test ${PIPESTATUS[0]} -eq 0
+
+      - name: Push build log for inspection
+        if: always()
+        shell: bash
+        run: |
+          git config user.email "ci@example.com"
+          git config user.name "CI Bot"
+          git checkout -B ci-logs
+          git add -f build.log
+          git commit -m "CI build log [skip ci]" || true
+          git push -f origin ci-logs
 
       - name: Upload APK
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: screen-notifications-debug-apk
