@@ -26,6 +26,6 @@ android {
 
 dependencies {
     implementation 'com.android.support:appcompat-v7:25.3.1'
-    implementation 'com.github.lkorth.mailable-log:MailableLog:0.1.6'
-    implementation 'com.github.PomepuyN.discreet-app-rate:DiscreetAppRate:d9e007907d98191145f2b31057f0813e18bb320a'
+    implementation 'com.lukekorth:mailable_log:0.1.6'
+    implementation 'fr.nicolaspomepuy:discreetapprate:2.0.4'
 }
