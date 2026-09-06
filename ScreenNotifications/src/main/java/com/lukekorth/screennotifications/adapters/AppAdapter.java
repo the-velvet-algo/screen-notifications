@@ -40,7 +40,7 @@ public class AppAdapter extends BaseAdapter implements RealmChangeListener<Realm
 
     private void getApps() {
         mApps = mRealm.where(App.class)
-                .findAllSorted("name");
+                .sort("name").findAll();
         mApps.addChangeListener(this);
 
         notifyDataSetChanged();

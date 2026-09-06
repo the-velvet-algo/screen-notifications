@@ -60,7 +60,7 @@ public class AppHelper {
 
     public static RealmResults<RecentApp> getRecentNotifyingApps() {
         return Realm.getDefaultInstance().where(RecentApp.class)
-                .findAllSorted("timestamp", Sort.DESCENDING);
+                .sort("timestamp", Sort.DESCENDING).findAll();
     }
 
     public static RealmResults<App> getNotifyingApps() {
