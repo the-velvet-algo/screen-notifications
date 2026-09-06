@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 
 import io.realm.RealmObject;
 import io.realm.annotations.Required;
-import io.realm.internal.OutOfMemoryError;
 
 public class App extends RealmObject {
 

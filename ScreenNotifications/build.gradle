@@ -13,6 +13,10 @@ android {
         versionName "0.14.2"
     }
 
+    buildFeatures {
+        buildConfig true
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
@@ -27,5 +31,4 @@ android {
 dependencies {
     implementation 'com.android.support:appcompat-v7:25.3.1'
     implementation 'com.lukekorth:mailable_log:0.1.6'
-    implementation 'fr.nicolaspomepuy:discreetapprate:2.0.4'
 }
