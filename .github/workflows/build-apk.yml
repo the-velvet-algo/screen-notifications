@@ -26,7 +26,7 @@ jobs:
       - name: Build debug APK
         shell: bash
         run: |
-          ./gradlew clean assembleDebug --stacktrace --info --no-build-cache --no-parallel --max-workers=1 2>&1 | grep -i -E "manifest|packageDebug|IncrementalSplitter|zip|apk " | tee build.log
+          ./gradlew clean assembleDebug --stacktrace 2>&1 | tee build.log
           test ${PIPESTATUS[0]} -eq 0
 
       - name: Push build log for inspection

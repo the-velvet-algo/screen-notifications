@@ -2,12 +2,12 @@ apply plugin: 'com.android.application'
 
 android {
     namespace 'com.lukekorth.screennotifications'
-    compileSdkVersion 34
+    compileSdkVersion 33
 
     defaultConfig {
         applicationId 'com.lukekorth.screennotifications'
         minSdkVersion 21
-        targetSdkVersion 34
+        targetSdkVersion 33
         versionCode 22
         versionName "0.14.2"
     }
@@ -21,7 +21,7 @@ android {
         targetCompatibility JavaVersion.VERSION_11
     }
 
-    lint {
+    lintOptions {
         abortOnError false
         checkReleaseBuilds false
     }
