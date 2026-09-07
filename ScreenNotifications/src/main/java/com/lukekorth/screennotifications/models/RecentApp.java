@@ -9,23 +9,14 @@ import com.lukekorth.screennotifications.R;
 
 import org.slf4j.LoggerFactory;
 
-import io.realm.RealmObject;
-import io.realm.annotations.Ignore;
-import io.realm.annotations.Required;
+public class RecentApp {
 
-public class RecentApp extends RealmObject {
-
-    @Required
     private String packageName;
     private long timestamp;
 
-    @Ignore
     private boolean informationFetched;
-    @Ignore
     private boolean installed;
-    @Ignore
     private String name;
-    @Ignore
     private Drawable icon;
 
     public String getPackageName() {

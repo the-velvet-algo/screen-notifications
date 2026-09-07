@@ -4,12 +4,8 @@ import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 
-import io.realm.RealmObject;
-import io.realm.annotations.Required;
+public class App {
 
-public class App extends RealmObject {
-
-    @Required
     private String packageName;
     private String name;
     private boolean enabled;

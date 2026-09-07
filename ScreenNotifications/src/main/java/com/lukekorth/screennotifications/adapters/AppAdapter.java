@@ -13,42 +13,35 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lukekorth.screennotifications.R;
+import com.lukekorth.screennotifications.helpers.AppHelper;
 import com.lukekorth.screennotifications.models.App;
 
-import io.realm.Realm;
-import io.realm.RealmChangeListener;
-import io.realm.RealmResults;
+import java.util.List;
 
-public class AppAdapter extends BaseAdapter implements RealmChangeListener<RealmResults<App>> {
+public class AppAdapter extends BaseAdapter {
 
     private Context mContext;
 	private LayoutInflater mInflater;
-    private Realm mRealm;
-	private RealmResults<App> mApps;
+	private List<App> mApps;
 
 	public AppAdapter(Context context) {
         mContext = context;
 		mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		mRealm = Realm.getDefaultInstance();
 
         getApps();
 	}
 
     public void tearDown() {
-        mRealm.close();
+        // no-op: the JSON-backed store has no open resource to close
+    }
+
+    public void refresh() {
+        getApps();
     }
 
     private void getApps() {
-        mApps = mRealm.where(App.class)
-                .sort("name").findAll();
-        mApps.addChangeListener(this);
-
+        mApps = AppHelper.getNotifyingApps();
         notifyDataSetChanged();
-    }
-
-    @Override
-    public void onChange(RealmResults<App> element) {
-        getApps();
     }
 
 	@Override
@@ -86,9 +79,8 @@ public class AppAdapter extends BaseAdapter implements RealmChangeListener<Realm
 		holder.selected.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				mRealm.beginTransaction();
 				app.setEnabled(isChecked);
-				mRealm.commitTransaction();
+				AppHelper.setAppEnabled(app.getPackageName(), isChecked);
 			}
 		});
 		

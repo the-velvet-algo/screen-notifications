@@ -5,12 +5,9 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import com.lukekorth.mailable_log.MailableLog;
-import com.lukekorth.screennotifications.helpers.DatabaseMigrations;
+import com.lukekorth.screennotifications.helpers.AppHelper;
 
 import java.util.Date;
-
-import io.realm.Realm;
-import io.realm.RealmConfiguration;
 
 public class ScreenNotificationsApplication extends Application {
 
@@ -20,12 +17,7 @@ public class ScreenNotificationsApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        Realm.init(this);
-        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder()
-                .schemaVersion(1)
-                .migration(new DatabaseMigrations())
-                .build();
-        Realm.setDefaultConfiguration(realmConfiguration);
+        AppHelper.init(this);
 
         migrate();
 

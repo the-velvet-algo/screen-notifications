@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'realm-android'
 
 android {
     namespace 'com.lukekorth.screennotifications'
@@ -20,20 +19,6 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
-    }
-
-    packaging {
-        jniLibs {
-            useLegacyPackaging = true
-        }
-    }
-
-    buildTypes {
-        debug {
-            ndk {
-                debugSymbolLevel 'NONE'
-            }
-        }
     }
 
     lint {

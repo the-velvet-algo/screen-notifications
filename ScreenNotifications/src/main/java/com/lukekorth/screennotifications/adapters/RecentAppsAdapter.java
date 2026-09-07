@@ -14,13 +14,13 @@ import com.lukekorth.screennotifications.R;
 import com.lukekorth.screennotifications.helpers.AppHelper;
 import com.lukekorth.screennotifications.models.RecentApp;
 
-import io.realm.RealmResults;
+import java.util.List;
 
 public class RecentAppsAdapter extends BaseAdapter {
 
     private Context mContext;
     private LayoutInflater mInflater;
-    private RealmResults<RecentApp> mApps;
+    private List<RecentApp> mApps;
 
     public RecentAppsAdapter(Context context) {
         mContext = context;
