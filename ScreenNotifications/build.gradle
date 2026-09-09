@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace 'com.lukekorth.screennotifications'
-    compileSdkVersion 33
+    namespace 'com.thevelvetalgo.screenwake'
+    compileSdkVersion 34
 
     defaultConfig {
-        applicationId 'com.lukekorth.screennotifications'
-        minSdkVersion 21
-        targetSdkVersion 33
-        versionCode 22
-        versionName "0.14.2"
+        applicationId 'com.thevelvetalgo.screenwake'
+        minSdkVersion 24
+        targetSdkVersion 34
+        versionCode 1
+        versionName "1.0"
     }
 
     buildFeatures {
@@ -21,13 +21,12 @@ android {
         targetCompatibility JavaVersion.VERSION_11
     }
 
-    lintOptions {
+    lint {
         abortOnError false
         checkReleaseBuilds false
     }
 }
 
 dependencies {
-    implementation 'com.android.support:appcompat-v7:25.3.1'
-    implementation 'com.lukekorth:mailable_log:0.1.6'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
 }
